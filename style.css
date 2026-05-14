@@ -11,7 +11,6 @@ body{
 }
 
 /* HEADER */
-
 .top{
   text-align:center;
   padding:60px 20px;
@@ -22,7 +21,6 @@ body{
 }
 
 /* MENU */
-
 .menu-wrap{
   display:flex;
   align-items:center;
@@ -62,7 +60,6 @@ body{
 }
 
 /* PRODUTOS */
-
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -71,8 +68,6 @@ body{
   max-width:1100px;
   margin:auto;
 }
-
-/* CARD */
 
 .card{
   background:rgba(255,255,255,0.03);
@@ -88,15 +83,14 @@ body{
 }
 
 .card span{
+  display:block;
+  margin:10px 0;
   color:#7CFF9B;
   font-size:20px;
   font-weight:700;
-  display:block;
-  margin:10px 0;
 }
 
 /* ESTOQUE */
-
 .stock{
   background:rgba(255,0,50,0.08);
   color:#ff6b7a;
@@ -106,7 +100,6 @@ body{
 }
 
 /* BOTÃO */
-
 button{
   width:100%;
   padding:12px;
@@ -123,30 +116,52 @@ button:hover{
 }
 
 /* OVERLAY */
-
 .overlay{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(6px);
-  display:none;
+  background:rgba(0,0,0,0.0);
+  backdrop-filter:blur(0px);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:0.25s ease;
+
   z-index:50;
 }
 
-/* POPUPS */
+.overlay.active{
+  opacity:1;
+  visibility:visible;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);
+}
 
+/* POPUPS MENU */
 .popup{
   position:fixed;
   top:50%;
   left:50%;
-  transform:translate(-50%,-50%);
-  display:none;
+  transform:translate(-50%,-60%) scale(0.95);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:0.25s ease;
+
   z-index:60;
 }
 
+.popup.active{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* CAIXA POPUP */
 .box{
   width:500px;
   max-width:90vw;
@@ -156,27 +171,53 @@ button:hover{
   padding:25px;
 }
 
-/* MODAL COMPRA */
-
+/* MODAL COMPRA (SLIDE UP) */
 .modal{
-  display:none;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.7);
+
+  display:flex;
   justify-content:center;
   align-items:center;
+
+  background:rgba(0,0,0,0.0);
+  backdrop-filter:blur(0px);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:0.25s ease;
+
   z-index:80;
 }
 
+.modal.active{
+  opacity:1;
+  visibility:visible;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(6px);
+}
+
+/* SLIDE UP */
 .modal-box{
   background:#0d0d0d;
   padding:25px;
   border-radius:20px;
   width:400px;
   border:1px solid #7a1120;
+
+  transform:translateY(30px);
+  opacity:0;
+
+  transition:0.25s ease;
+}
+
+.modal.active .modal-box{
+  transform:translateY(0);
+  opacity:1;
 }
 
 .modal-prod{
