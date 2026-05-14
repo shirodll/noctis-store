@@ -3,8 +3,6 @@ const estoque = {
   nitro: 3
 };
 
-/* ESTOQUE */
-
 function init(){
   for(let i in estoque){
     if(!localStorage.getItem(i)){
@@ -14,6 +12,7 @@ function init(){
   }
 }
 
+/* ESTOQUE */
 function update(id){
   let el = document.getElementById("estoque-" + id);
   let qtd = localStorage.getItem(id);
@@ -24,8 +23,8 @@ function update(id){
 }
 
 /* COMPRA */
-
 function comprar(id,nome,preco,img){
+
   let qtd = parseInt(localStorage.getItem(id));
 
   if(qtd <= 0){
@@ -42,35 +41,34 @@ function comprar(id,nome,preco,img){
 }
 
 /* MODAL COMPRA */
-
 function abrirCompra(nome,preco,img){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("nomeModal").innerText=nome;
-  document.getElementById("precoModal").innerText=preco;
-  document.getElementById("imgModal").src=img;
+  document.getElementById("modal").classList.add("active");
+  document.getElementById("nomeModal").innerText = nome;
+  document.getElementById("precoModal").innerText = preco;
+  document.getElementById("imgModal").src = img;
 }
 
 function fecharCompra(){
-  document.getElementById("modal").style.display="none";
+  document.getElementById("modal").classList.remove("active");
 }
 
 /* POPUPS MENU */
-
 function abrirPagina(id){
-  document.getElementById("overlay").style.display="block";
-  document.getElementById(id).style.display="block";
+  document.getElementById("overlay").classList.add("active");
+  document.getElementById(id).classList.add("active");
 }
 
 function fecharPaginas(){
-  document.getElementById("overlay").style.display="none";
+  document.getElementById("overlay").classList.remove("active");
 
   document.querySelectorAll(".popup").forEach(p=>{
-    p.style.display="none";
+    p.classList.remove("active");
   });
 
   fecharCompra();
 }
 
+/* clique fora */
 window.onclick = function(e){
   if(e.target.classList.contains("overlay")){
     fecharPaginas();
