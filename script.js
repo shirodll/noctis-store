@@ -3,19 +3,20 @@ const estoque = {
   nitro: 3
 };
 
+/* INICIALIZA ESTOQUE */
 function init(){
   for(let i in estoque){
     if(!localStorage.getItem(i)){
       localStorage.setItem(i, estoque[i]);
     }
-    update(i);
+    atualizar(i);
   }
 }
 
-/* ESTOQUE */
-function update(id){
-  let el = document.getElementById("estoque-" + id);
-  let qtd = localStorage.getItem(id);
+/* ATUALIZA TEXTO DO ESTOQUE */
+function atualizar(id){
+  const el = document.getElementById("estoque-" + id);
+  const qtd = localStorage.getItem(id);
 
   if(el){
     el.innerText = `🔥 Estoque: ${qtd} restantes`;
@@ -35,7 +36,7 @@ function comprar(id,nome,preco,img){
   qtd--;
   localStorage.setItem(id,qtd);
 
-  update(id);
+  atualizar(id);
 
   abrirCompra(nome,preco,img);
 }
@@ -43,6 +44,7 @@ function comprar(id,nome,preco,img){
 /* MODAL COMPRA */
 function abrirCompra(nome,preco,img){
   document.getElementById("modal").classList.add("active");
+
   document.getElementById("nomeModal").innerText = nome;
   document.getElementById("precoModal").innerText = preco;
   document.getElementById("imgModal").src = img;
@@ -68,7 +70,7 @@ function fecharPaginas(){
   fecharCompra();
 }
 
-/* clique fora */
+/* CLIQUE FORA FECHA */
 window.onclick = function(e){
   if(e.target.classList.contains("overlay")){
     fecharPaginas();
