@@ -2,128 +2,161 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noctis Store</title>
 
-  <title>ZTS Style Store</title>
+  <link rel="stylesheet" href="style.css">
 
-  <link rel="stylesheet" href="style.css" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <header>
+<header class="top">
 
-    <h1>Minha Store</h1>
+  <h1>Noctis Store</h1>
+  <p>Produtos digitais premium</p>
 
-    <p>Produtos digitais premium</p>
+  <!-- MENU -->
+  <div class="menu-wrap">
 
-  </header>
+    <div class="menu-line"></div>
 
-  <section class="products">
+    <nav class="menu">
 
-    <!-- PRODUTO -->
+      <a href="#" onclick="fecharPaginas()">Produtos</a>
+      <a href="#" onclick="abrirPagina('termos')">Termos</a>
+      <a href="#" onclick="abrirPagina('faq')">FAQ</a>
+      <a href="#" onclick="abrirPagina('pagamento')">Pagamento</a>
 
-    <div class="card">
+    </nav>
 
-      <img src="img/cristal.png" />
-
-      <h2>60 Cristais</h2>
-
-      <span>R$ 4,30</span>
-
-      <button onclick="abrirModal(
-        '60 Cristais',
-        'R$ 4,30',
-        'img/cristal.png'
-      )">
-        Comprar
-      </button>
-
-    </div>
-
-    <!-- PRODUTO -->
-
-    <div class="card">
-
-      <img src="img/nitro.png" />
-
-      <h2>Discord Nitro</h2>
-
-      <span>R$ 12,00</span>
-
-      <button onclick="abrirModal(
-        'Discord Nitro',
-        'R$ 12,00',
-        'img/nitro.png'
-      )">
-        Comprar
-      </button>
-
-    </div>
-
-  </section>
-
-  <!-- MODAL -->
-
-  <div class="modal" id="modal">
-
-    <div class="modal-box">
-
-      <span class="close" onclick="fecharModal()">
-        ×
-      </span>
-
-      <h1>Finalizar Compra</h1>
-
-      <div class="modal-product">
-
-        <img id="modalImg">
-
-        <div>
-
-          <h2 id="modalNome"></h2>
-
-          <span id="modalPreco"></span>
-
-        </div>
-
-      </div>
-
-      <div class="modal-info">
-
-        <p>
-          Para finalizar sua compra,
-          entre em contato comigo
-          <strong>@SeuDiscord</strong>
-          na DM do Discord informando:
-        </p>
-
-        <ul>
-          <li>✔ Produto desejado</li>
-          <li>✔ Quantidade</li>
-          <li>✔ Forma de pagamento</li>
-        </ul>
-
-      </div>
-
-      <a
-        href="https://discord.gg/SEULINK"
-        target="_blank"
-      >
-        <button class="discord-btn">
-          Comprar via Discord
-        </button>
-      </a>
-
-    </div>
+    <div class="menu-line"></div>
 
   </div>
 
-  <script src="script.js"></script>
+</header>
+
+<!-- PRODUTOS -->
+<section class="products">
+
+  <div class="card">
+
+    <img src="img/cristal.png">
+
+    <h2>60 Cristais</h2>
+
+    <span>R$ 4,30</span>
+
+    <div class="stock" id="estoque-cristal">
+      🔥 Estoque: 7 restantes
+    </div>
+
+    <button onclick="comprar('cristal','60 Cristais','R$ 4,30','img/cristal.png')">
+      Comprar
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <img src="img/nitro.png">
+
+    <h2>Discord Nitro</h2>
+
+    <span>R$ 12,00</span>
+
+    <div class="stock" id="estoque-nitro">
+      🔥 Estoque: 3 restantes
+    </div>
+
+    <button onclick="comprar('nitro','Discord Nitro','R$ 12,00','img/nitro.png')">
+      Comprar
+    </button>
+
+  </div>
+
+</section>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="fecharPaginas()"></div>
+
+<!-- TERMOS -->
+<div class="popup" id="termos">
+  <div class="box">
+    <h2>Termos de Serviço</h2>
+    <p>
+      • Não há reembolso após compra.<br>
+      • Entregas via Discord.<br>
+      • Responsabilidade do cliente pelos dados.<br>
+    </p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="popup" id="faq">
+  <div class="box">
+    <h2>FAQ</h2>
+    <p>
+      <b>Como recebo?</b><br>
+      Via Discord após pagamento.<br><br>
+
+      <b>Tempo?</b><br>
+      Entrega imediata.<br><br>
+
+      <b>É seguro?</b><br>
+      Sim.
+    </p>
+  </div>
+</div>
+
+<!-- PAGAMENTO -->
+<div class="popup" id="pagamento">
+  <div class="box">
+    <h2>Pagamento</h2>
+    <p>
+      Aceitamos:<br>
+      • Pix<br>
+      • Outros métodos combinados<br><br>
+
+      Após pagamento, envie no Discord:<br>
+      <b>@SeuDiscord</b>
+    </p>
+  </div>
+</div>
+
+<!-- MODAL COMPRA -->
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <span onclick="fecharCompra()" class="close">×</span>
+
+    <h2>Finalizar Compra</h2>
+
+    <div class="modal-prod">
+      <img id="imgModal">
+      <div>
+        <h3 id="nomeModal"></h3>
+        <p id="precoModal"></p>
+      </div>
+    </div>
+
+    <p class="info">
+      Fale no Discord com <b>@SeuDiscord</b> para finalizar.
+    </p>
+
+    <a href="https://discord.gg/SEULINK" target="_blank">
+      <button class="btn">Comprar via Discord</button>
+    </a>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 
