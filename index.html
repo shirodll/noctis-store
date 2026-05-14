@@ -8,7 +8,6 @@
   <title>Noctis Store</title>
 
   <link rel="stylesheet" href="style.css">
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -25,12 +24,10 @@
     <div class="menu-line"></div>
 
     <nav class="menu">
-
       <a href="#" onclick="fecharPaginas()">Produtos</a>
       <a href="#" onclick="abrirPagina('termos')">Termos</a>
       <a href="#" onclick="abrirPagina('faq')">FAQ</a>
       <a href="#" onclick="abrirPagina('pagamento')">Pagamento</a>
-
     </nav>
 
     <div class="menu-line"></div>
@@ -43,11 +40,9 @@
 <section class="products">
 
   <div class="card">
-
     <img src="img/cristal.png">
 
     <h2>60 Cristais</h2>
-
     <span>R$ 4,30</span>
 
     <div class="stock" id="estoque-cristal">
@@ -57,15 +52,12 @@
     <button onclick="comprar('cristal','60 Cristais','R$ 4,30','img/cristal.png')">
       Comprar
     </button>
-
   </div>
 
   <div class="card">
-
     <img src="img/nitro.png">
 
     <h2>Discord Nitro</h2>
-
     <span>R$ 12,00</span>
 
     <div class="stock" id="estoque-nitro">
@@ -75,7 +67,6 @@
     <button onclick="comprar('nitro','Discord Nitro','R$ 12,00','img/nitro.png')">
       Comprar
     </button>
-
   </div>
 
 </section>
@@ -83,46 +74,35 @@
 <!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="fecharPaginas()"></div>
 
-<!-- TERMOS -->
+<!-- POPUPS MENU -->
 <div class="popup" id="termos">
   <div class="box">
     <h2>Termos de Serviço</h2>
     <p>
       • Não há reembolso após compra.<br>
       • Entregas via Discord.<br>
-      • Responsabilidade do cliente pelos dados.<br>
+      • Cliente responsável pelos dados.
     </p>
   </div>
 </div>
 
-<!-- FAQ -->
 <div class="popup" id="faq">
   <div class="box">
     <h2>FAQ</h2>
     <p>
-      <b>Como recebo?</b><br>
-      Via Discord após pagamento.<br><br>
-
-      <b>Tempo?</b><br>
-      Entrega imediata.<br><br>
-
-      <b>É seguro?</b><br>
-      Sim.
+      <b>Entrega?</b> Imediata via Discord.<br><br>
+      <b>Seguro?</b> Sim.<br><br>
+      <b>Como recebo?</b> No Discord.
     </p>
   </div>
 </div>
 
-<!-- PAGAMENTO -->
 <div class="popup" id="pagamento">
   <div class="box">
     <h2>Pagamento</h2>
     <p>
-      Aceitamos:<br>
-      • Pix<br>
-      • Outros métodos combinados<br><br>
-
-      Após pagamento, envie no Discord:<br>
-      <b>@SeuDiscord</b>
+      Aceitamos Pix e outros métodos combinados.<br><br>
+      Envie comprovante para <b>@SeuDiscord</b>.
     </p>
   </div>
 </div>
@@ -132,7 +112,7 @@
 
   <div class="modal-box">
 
-    <span onclick="fecharCompra()" class="close">×</span>
+    <span class="close" onclick="fecharCompra()">×</span>
 
     <h2>Finalizar Compra</h2>
 
@@ -159,5 +139,4 @@
 <script src="script.js"></script>
 
 </body>
-
 </html>
